@@ -11,6 +11,15 @@ import java.util.Date;
  * Created by zhoumb on 2018/12/25
  */
 public class FirstClientHandler extends ChannelInboundHandlerAdapter {
+
+    /**
+     * 该方法会在双方建立连接后调用，在这里编写向服务端发送数据的逻辑
+     * 发送数据分为两步
+     * ①：获取一个netty对二进制数据的抽象ByteBuf,将数据写入当中
+     * ②：利用ctx.writeAndFlush()将数据写到服务端
+     *
+     * @param ctx
+     */
     @Override
     public void channelActive(ChannelHandlerContext ctx) {
         System.out.println(new Date() + ": 客户端写出数据");
