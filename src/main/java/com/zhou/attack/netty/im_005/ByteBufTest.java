@@ -46,6 +46,18 @@ public class ByteBufTest {
         ByteBuf slice = buffer.slice(1, 5);
         print("slice(1,5)", buffer);
         print("slice", slice);
+
+        buffer.writeBytes(new byte[10]);
+        print("writeBytes(new byte[10])", buffer);
+        buffer.markReaderIndex();
+        buffer.readBytes(5);
+        print("readBytes(5)", buffer);
+        buffer.resetReaderIndex();
+        print("buffer.restReaderIndex()", buffer);
+
+        //netty使用堆外内存，堆外内存是不被jvm管理的，无法被自定被垃圾收集，因此需要手动释放，不然会造成内存溢出
+        //release():释放堆外内存
+        //retain()
     }
 
     private static void print(String action, ByteBuf buffer) {
