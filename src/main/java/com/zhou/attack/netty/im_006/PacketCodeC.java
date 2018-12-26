@@ -2,6 +2,8 @@ package com.zhou.attack.netty.im_006;
 
 
 import com.google.common.collect.Maps;
+import com.zhou.attack.netty.im_007.MessageRequestPacket;
+import com.zhou.attack.netty.im_007.MessageResponsePacket;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.ByteBufAllocator;
 
@@ -22,6 +24,8 @@ public final class PacketCodeC {
         packetTypeMap = Maps.newHashMap();
         packetTypeMap.put(Command.LOGIN_REQUEST, LoginRequestPacket.class);
         packetTypeMap.put(Command.LOGIN_RESPONSE, LoginResponsePacket.class);
+        packetTypeMap.put(Command.LOGIN_REQUEST, MessageRequestPacket.class);
+        packetTypeMap.put(Command.LOGIN_RESPONSE, MessageResponsePacket.class);
 
         serializerMap = Maps.newHashMap();
         Serializer serializer = new JSONSerializer();

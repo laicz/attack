@@ -9,4 +9,11 @@ public interface Command {
 
     //登陆回应数据包
     Byte LOGIN_RESPONSE = 2;
+
+    //发送信息数据包
+    Byte MESSAGE_REQUEST = 3;
+
+    //接收数据包
+    Byte MESSAGE_RESPONSE = 4;
+
 }

@@ -1,5 +1,7 @@
 package com.zhou.attack.netty.im_006;
 
+import com.zhou.attack.netty.im_007.LoginUtil;
+import com.zhou.attack.netty.im_007.MessageResponsePacket;
 import com.zhou.attack.utils.DateFormateUtils;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
@@ -20,7 +22,7 @@ public class LoginClientHandler extends ChannelInboundHandlerAdapter {
         //创建登陆对象
         LoginRequestPacket loginRequestPacket = new LoginRequestPacket();
         loginRequestPacket.setUserId(UUID.randomUUID().toString());
-        loginRequestPacket.setUsername("laic");
+        loginRequestPacket.setUsername("zhou");
         loginRequestPacket.setPassword("pwd");
 
         //编码
@@ -37,9 +39,13 @@ public class LoginClientHandler extends ChannelInboundHandlerAdapter {
             LoginResponsePacket loginResponsePacket = (LoginResponsePacket) packet;
             if (loginResponsePacket.isSuccess()) {
                 System.out.println(DateFormateUtils.format(new Date(), DateFormateUtils.FormatTemplate.YMDHMS) + " : 客户端登陆成功");
+                LoginUtil.markAsLogin(ctx.channel());
             } else {
-                System.out.println(DateFormateUtils.format(new Date(), DateFormateUtils.FormatTemplate.YMDHMS) + " : 客户端登陆失败 原因：" + loginResponsePacket.getResson());
+                System.out.println(DateFormateUtils.format(new Date(), DateFormateUtils.FormatTemplate.YMDHMS) + " : 客户端登陆失败 原因：" + loginResponsePacket.getReason());
             }
+        } else if (packet instanceof MessageResponsePacket) {
+            MessageResponsePacket messageResponsePacket = (MessageResponsePacket) msg;
+            System.out.println(DateFormateUtils.format(new Date(), DateFormateUtils.FormatTemplate.YMDHMS) + " : 接收到服务端的信息 : " + messageResponsePacket.getMessage());
         }
     }
 }

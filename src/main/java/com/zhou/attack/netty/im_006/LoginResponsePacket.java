@@ -5,7 +5,7 @@ package com.zhou.attack.netty.im_006;
  */
 public class LoginResponsePacket extends Packet {
     private boolean success;
-    private String resson;
+    private String reason;
 
     public boolean isSuccess() {
         return success;
@@ -15,12 +15,12 @@ public class LoginResponsePacket extends Packet {
         this.success = success;
     }
 
-    public String getResson() {
-        return resson;
+    public String getReason() {
+        return reason;
     }
 
-    public void setResson(String resson) {
-        this.resson = resson;
+    public void setReason(String reason) {
+        this.reason = reason;
     }
 
     @Override
