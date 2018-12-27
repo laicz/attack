@@ -7,6 +7,15 @@ public class LoginResponsePacket extends Packet {
     private boolean success;
     private String reason;
 
+    public LoginResponsePacket(boolean success, String reason) {
+        this.success = success;
+        this.reason = reason;
+    }
+
+    public LoginResponsePacket(boolean success) {
+        this.success = success;
+    }
+
     public boolean isSuccess() {
         return success;
     }
