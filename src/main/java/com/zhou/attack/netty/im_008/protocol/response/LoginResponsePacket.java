@@ -8,9 +8,18 @@ import static com.zhou.attack.netty.im_008.protocol.Command.LOGIN_RESPONSE;
  * Created by zhoumb on 2018/12/27
  */
 public class LoginResponsePacket extends Packet {
+    private String userId;
     private Boolean success;
 
     private String reason;
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
 
     public Boolean getSuccess() {
         return success;
